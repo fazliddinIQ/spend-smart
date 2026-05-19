@@ -1,0 +1,35 @@
+.budget-container {
+  margin-bottom: 2rem;
+}
+
+.budget-title {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+.budget-desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.25rem;
+}
+
+.budget-form {
+  display: flex;
+  gap: 1rem;
+}
+
+.budget-form .input-glass {
+  margin-bottom: 0;
+  flex: 1;
+}
+
+.budget-form .btn {
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .budget-form {
+    flex-direction: column;
+  }
+}

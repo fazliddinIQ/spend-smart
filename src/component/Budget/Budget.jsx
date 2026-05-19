@@ -24,7 +24,7 @@ const Budget = () => {
         <input
           type="number"
           className="input-glass"
-          placeholder={isBudgetSetForThisMonth ? `Hozirgi byudjet: $${budget.monthly}` : "Summa kiriting ($)"}
+          placeholder={isBudgetSetForThisMonth ? `Hozirgi byudjet: ${budget.monthly}` : "Summa kiriting (so`m)"}
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
         />

@@ -75,7 +75,7 @@ const HarajatQoshish = () => {
         </div>
 
         <div className="form-group">
-          <label>Summa ($)</label>
+          <label>Summa (so`m)</label>
           <input
             className="input-glass"
             type="number"

@@ -27,7 +27,6 @@ const Navbar = () => {
     <nav className={`navbar glass-panel ${isBudgetExceeded ? "navbar-danger" : ""}`}>
       <div className="navbar-logo">
         <Wallet size={28} style={{ color: "var(--primary-color)" }} />
-        <h2>SMART SPEND</h2>
       </div>
 
       <div className="navbar-budget-container">

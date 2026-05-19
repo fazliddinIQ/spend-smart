@@ -108,7 +108,7 @@ const SonggiHarajatlar = () => {
         <>
           <div className="total-summary glass-panel">
             <h3>{activeTab === "Bugun" ? "Total today:" : activeTab === "Bu Oy" ? "Total this month:" : "Total all time:"}</h3>
-            <p className="total-number">${totalAmount}</p>
+            <p className="total-number">{totalAmount}</p>
           </div>
           
           <div className="chart-wrapper glass-card">

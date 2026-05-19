@@ -1,21 +1,25 @@
 import { createContext, useContext, useState, useEffect } from "react";
+import axios from "axios";
 
 const AppContext = createContext();
 
 export const useAppContext = () => useContext(AppContext);
 
 export const AppProvider = ({ children }) => {
+  const API_URL = "http://localhost:5000/api";
+
   // Auth state
   const [user, setUser] = useState(() => {
     const saved = localStorage.getItem("harajatlar_user");
     return saved ? JSON.parse(saved) : null;
   });
 
-  // Barcha harajatlar ro'yxati
-  const [expenses, setExpenses] = useState(() => {
-    const saved = localStorage.getItem("harajatlar_data");
-    return saved ? JSON.parse(saved) : [];
+  const [token, setToken] = useState(() => {
+    return localStorage.getItem("harajatlar_token") || null;
   });
+
+  // Barcha harajatlar ro'yxati
+  const [expenses, setExpenses] = useState([]);
 
   // Oylik byudjet
   const [budget, setBudget] = useState(() => {
@@ -28,51 +32,103 @@ export const AppProvider = ({ children }) => {
     return localStorage.getItem("harajatlar_theme") || "light";
   });
 
-  // Auth funksiyalari
-  const loginUser = (username, password) => {
-    const users = JSON.parse(localStorage.getItem("harajatlar_users_db") || "[]");
-    const foundUser = users.find(u => u.username === username && u.password === password);
-    if (foundUser) {
-      setUser(foundUser);
-      return true;
+  // Axios default headers
+  useEffect(() => {
+    if (token) {
+      // Backend expects the exact token in the authorization header
+      axios.defaults.headers.common["Authorization"] = token;
+    } else {
+      delete axios.defaults.headers.common["Authorization"];
     }
-    return false;
+  }, [token]);
+
+  // Expenses backend fetching
+  useEffect(() => {
+    if (user && token) {
+      const fetchExpenses = async () => {
+        try {
+          const res = await axios.get(`${API_URL}/expenses`);
+          const formatted = res.data.map(item => ({
+             ...item,
+             id: item._id,
+             date: item.createdAt
+          }));
+          setExpenses(formatted.reverse());
+        } catch (error) {
+          console.error("Xarajatlarni olishda xatolik:", error);
+        }
+      };
+      fetchExpenses();
+    } else {
+      setExpenses([]);
+    }
+  }, [user, token]);
+
+  // Auth funksiyalari
+  const loginUser = async (username, password) => {
+    try {
+      const res = await axios.post(`${API_URL}/auth/login`, { username, password });
+      setUser(res.data.user);
+      setToken(res.data.token);
+      localStorage.setItem("harajatlar_user", JSON.stringify(res.data.user));
+      localStorage.setItem("harajatlar_token", res.data.token);
+      return true;
+    } catch (error) {
+      console.error("Login xatosi:", error);
+      return false;
+    }
   };
 
-  const registerUser = (username, password) => {
-    const users = JSON.parse(localStorage.getItem("harajatlar_users_db") || "[]");
-    if (users.find(u => u.username === username)) {
-      return false; // already exists
+  const registerUser = async (username, password) => {
+    try {
+      await axios.post(`${API_URL}/auth/register`, { username, password });
+      return await loginUser(username, password);
+    } catch (error) {
+      console.error("Register xatosi:", error);
+      return false;
     }
-    const newUser = { username, password };
-    users.push(newUser);
-    localStorage.setItem("harajatlar_users_db", JSON.stringify(users));
-    setUser(newUser);
-    return true;
   };
 
   const logoutUser = () => {
     setUser(null);
+    setToken(null);
+    localStorage.removeItem("harajatlar_user");
+    localStorage.removeItem("harajatlar_token");
   };
 
   // Harajat qo'shish
-  const addExpense = (expense) => {
-    const newExpense = {
-      ...expense,
-      id: Date.now().toString(),
-      date: new Date().toISOString()
-    };
-    setExpenses((prev) => [newExpense, ...prev]);
+  const addExpense = async (expense) => {
+    try {
+      const res = await axios.post(`${API_URL}/expenses`, expense);
+      const newExpense = {
+        ...res.data,
+        id: res.data._id,
+        date: res.data.createdAt
+      };
+      setExpenses((prev) => [newExpense, ...prev]);
+    } catch (error) {
+      console.error("Xarajat qo'shishda xatolik:", error);
+    }
   };
 
-  const deleteExpense = (id) => {
-    setExpenses((prev) => prev.filter((item) => item.id !== id));
+  const deleteExpense = async (id) => {
+    try {
+      await axios.delete(`${API_URL}/expenses/${id}`);
+      setExpenses((prev) => prev.filter((item) => item.id !== id));
+    } catch (error) {
+      console.error("Xarajatni o'chirishda xatolik:", error);
+    }
   };
 
-  const editExpense = (id, updatedExpense) => {
-    setExpenses((prev) =>
-      prev.map((item) => (item.id === id ? { ...item, ...updatedExpense } : item))
-    );
+  const editExpense = async (id, updatedExpense) => {
+    try {
+      await axios.put(`${API_URL}/expenses/${id}`, updatedExpense);
+      setExpenses((prev) =>
+        prev.map((item) => (item.id === id ? { ...item, ...updatedExpense } : item))
+      );
+    } catch (error) {
+      console.error("Xarajatni yangilashda xatolik:", error);
+    }
   };
 
   const updateBudget = (amount) => {
@@ -84,18 +140,6 @@ export const AppProvider = ({ children }) => {
   };
 
   // LocalStorage Effects
-  useEffect(() => {
-    if (user) {
-      localStorage.setItem("harajatlar_user", JSON.stringify(user));
-    } else {
-      localStorage.removeItem("harajatlar_user");
-    }
-  }, [user]);
-
-  useEffect(() => {
-    localStorage.setItem("harajatlar_data", JSON.stringify(expenses));
-  }, [expenses]);
-
   useEffect(() => {
     localStorage.setItem("harajatlar_budget", JSON.stringify(budget));
   }, [budget]);

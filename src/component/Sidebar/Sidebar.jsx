@@ -9,7 +9,7 @@ const Sidebar = () => {
   return (
     <aside className="sidebar">
       <div className="sidebar-top">
-        <h1 className="logo-text">Finance</h1>
+        <h1 className="logo-text"> SMART SPEND</h1>
       </div>
 
       <nav className="sidebar-nav">

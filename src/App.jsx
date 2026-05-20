@@ -47,8 +47,8 @@ const RouterComponent = () => {
       ),
       children: [
         { index: true, element: <Navigate to="harajatqoshish" /> }, 
-        { path: "harajatqoshish", element: <HarajatQoshish /> },
-        { path: "songgi", element: <SonggiHarajatlar /> }
+        { path: "harajatqoshish", element: <Harajatqoshish /> },
+        { path: "songgi", element: <Songgiharajatlar /> }
       ]
     },
     { path: "*", element: <Navigate to="/dashboard" /> }

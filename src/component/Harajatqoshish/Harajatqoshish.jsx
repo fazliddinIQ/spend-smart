@@ -79,7 +79,7 @@ const Harajatqoshish = () => {
           <input
             className="input-glass"
             type="number"
-            placeholder="Masalan: 25"
+            placeholder="Masalan: 25000"
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
           />

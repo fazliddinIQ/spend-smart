@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { PlusCircle, List, Moon, Sun } from "lucide-react";
+import { PlusCircle, List, Moon, Sun, User } from "lucide-react";
 import { useAppContext } from "../../context/AppContext";
 import "./Sidebar.css";
 
@@ -27,6 +27,14 @@ const Sidebar = () => {
         >
           <List size={22} />
           <span>Sõnggi Harajatlar</span>
+        </NavLink>
+
+        <NavLink 
+          to="/dashboard/profile" 
+          className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`}
+        >
+          <User size={22} />
+          <span>Profil</span>
         </NavLink>
       </nav>
 

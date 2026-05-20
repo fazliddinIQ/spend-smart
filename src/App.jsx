@@ -7,6 +7,7 @@ import Dashboard from "./page/Dashboard/Dashboard";
 
 import Harajatqoshish from "./component/Harajatqoshish/Harajatqoshish";
 import Songgiharajatlar from "./component/Songgiharajatlar/Songgiharajatlar";
+import Profile from "./Profile/Profile";
 
 // Himoyalangan route komponenti
 const PrivateRoute = ({ children }) => {
@@ -48,7 +49,8 @@ const RouterComponent = () => {
       children: [
         { index: true, element: <Navigate to="harajatqoshish" /> }, 
         { path: "harajatqoshish", element: <Harajatqoshish /> },
-        { path: "songgi", element: <Songgiharajatlar /> }
+        { path: "songgi", element: <Songgiharajatlar /> },
+        { path: "profile", element: <Profile /> }
       ]
     },
     { path: "*", element: <Navigate to="/dashboard" /> }

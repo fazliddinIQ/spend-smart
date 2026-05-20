@@ -48,7 +48,7 @@ const ExpenseChart = ({ data, type }) => {
     if (active && payload && payload.length) {
       return (
         <div style={{ background: "var(--glass-bg)", padding: "10px", borderRadius: "8px", border: "1px solid var(--glass-border)", color: "var(--text-primary)" }}>
-          <p>{`${label} : $${payload[0].value}`}</p>
+          <p>{`${label} : ${payload[0].value} so'm`}</p>
         </div>
       );
     }

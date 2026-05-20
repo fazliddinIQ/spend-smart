@@ -42,7 +42,7 @@ const Navbar = () => {
             <div className="budget-stat-box">
               <div className="budget-texts">
                 <span className="budget-label">
-                  Oylik Byudjet: <strong>${budget.monthly}</strong>
+                  Oylik Byudjet: <strong>{budget.monthly} so'm</strong>
                 </span>
 
                 <span className="budget-label">
@@ -54,7 +54,7 @@ const Navbar = () => {
                         : "inherit",
                     }}
                   >
-                    ${currentMonthTotal}
+                    {currentMonthTotal} so'm
                   </strong>
                 </span>
               </div>
@@ -86,14 +86,14 @@ const Navbar = () => {
                   <CalendarClock size={16} />
                   Bugungi Limit:{" "}
                   <strong>
-                    ${baseDailyLimit.toFixed(1)}
+                    {baseDailyLimit.toFixed(1)} so'm
                   </strong>
                 </span>
 
                 <span className="budget-label">
                   Qoldi:{" "}
                   <strong>
-                    ${remainingToday.toFixed(1)}
+                    {remainingToday.toFixed(1)} so'm
                   </strong>
                 </span>
               </div>

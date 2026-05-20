@@ -89,6 +89,18 @@ export const AppProvider = ({ children }) => {
     }
   };
 
+  const updateProfileUser = async (username, password) => {
+    try {
+      const res = await axios.put(`${API_URL}/auth/profile`, { username, password });
+      setUser(res.data.user);
+      localStorage.setItem("harajatlar_user", JSON.stringify(res.data.user));
+      return { success: true, message: res.data.message };
+    } catch (error) {
+      console.log("Profile update xatosi:", error);
+      return { success: false, message: error.response?.data?.message || "Xatolik yuz berdi" };
+    }
+  };
+
   const logoutUser = () => {
     setUser(null);
     setToken(null);
@@ -190,6 +202,7 @@ export const AppProvider = ({ children }) => {
         loginUser,
         registerUser,
         logoutUser,
+        updateProfileUser,
         expenses,
         budget,
         theme,

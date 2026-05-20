@@ -88,7 +88,7 @@ const Songgiharajatlar = () => {
                 </div>
                 <div className="card-body">
                   <h3 className="expense-name">{exp.itemName}</h3>
-                  <p className="expense-amount">${exp.amount}</p>
+                  <p className="expense-amount">{exp.amount} so'm</p>
                 </div>
                 <div className="card-actions">
                   <button className="action-btn edit" onClick={() => handleEdit(exp.id)}>

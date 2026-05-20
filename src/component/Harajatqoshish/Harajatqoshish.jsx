@@ -4,7 +4,7 @@ import { AlertTriangle, Plus } from "lucide-react";
 import Budget from "../Budget/Budget";
 import "./Harajatqoshish.css";
 
-const HarajatQoshish = () => {
+const Harajatqoshish = () => {
   const { addExpense, isBudgetSetForThisMonth } = useAppContext();
   
   const [category, setCategory] = useState("Kiyim");

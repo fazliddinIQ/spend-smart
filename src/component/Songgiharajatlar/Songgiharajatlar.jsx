@@ -2,9 +2,9 @@ import { useState } from "react";
 import { useAppContext } from "../../context/AppContext";
 import { Trash2, Edit3, Calendar } from "lucide-react";
 import ExpenseChart from "../Chart/Chart";
-import "./SonggiHarajatlar.css";
+import "./Songgiharajatlar.css";
 
-const SonggiHarajatlar = () => {
+const Songgiharajatlar = () => {
   const { expenses, deleteExpense, editExpense } = useAppContext();
   const [activeTab, setActiveTab] = useState("Bugun");
   

@@ -5,8 +5,8 @@ import Login from "./page/Login/Login";
 import Register from "./page/Register/Register";
 import Dashboard from "./page/Dashboard/Dashboard";
 
-import HarajatQoshish from "./component/Harajatqoshish/Harajatqoshish";
-import SonggiHarajatlar from "./component/Songgiharajatlar/Songgiharajatlar";
+import Harajatqoshish from "./component/Harajatqoshish/Harajatqoshish";
+import Songgiharajatlar from "./component/Songgiharajatlar/Songgiharajatlar";
 
 // Himoyalangan route komponenti
 const PrivateRoute = ({ children }) => {

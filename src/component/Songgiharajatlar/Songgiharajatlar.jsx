@@ -121,4 +121,4 @@ const Songgiharajatlar = () => {
   );
 };
 
-export default SonggiHarajatlar;
+export default Songgiharajatlar;

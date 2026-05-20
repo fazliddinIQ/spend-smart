@@ -98,4 +98,4 @@ const Harajatqoshish = () => {
   );
 };
 
-export default HarajatQoshish;
+export default Harajatqoshish;

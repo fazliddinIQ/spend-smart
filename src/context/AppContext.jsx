@@ -6,7 +6,7 @@ const AppContext = createContext();
 export const useAppContext = () => useContext(AppContext);
 
 export const AppProvider = ({ children }) => {
-  const API_URL = "http://localhost:5000/api";
+  const API_URL = "https://smart-spend-backend-2.onrender.com/api";
 
   // Auth state
   const [user, setUser] = useState(() => {

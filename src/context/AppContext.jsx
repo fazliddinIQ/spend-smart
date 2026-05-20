@@ -67,24 +67,24 @@ export const AppProvider = ({ children }) => {
   // Auth funksiyalari
   const loginUser = async (username, password) => {
     try {
-      const res = await axios.post(`${API_URL}/auth/login`, { username, password });
+      const res = await axios.post(`${API_URL}/login`, { username, password });
       setUser(res.data.user);
       setToken(res.data.token);
       localStorage.setItem("harajatlar_user", JSON.stringify(res.data.user));
       localStorage.setItem("harajatlar_token", res.data.token);
       return true;
     } catch (error) {
-      console.error("Login xatosi:", error);
+      console.log("Login xatosi:", error);
       return false;
     }
   };
 
   const registerUser = async (username, password) => {
     try {
-      await axios.post(`${API_URL}/auth/register`, { username, password });
+      await axios.post(`${API_URL}/register`, { username, password });
       return await loginUser(username, password);
     } catch (error) {
-      console.error("Register xatosi:", error);
+      console.log("Register xatosi:", error);
       return false;
     }
   };

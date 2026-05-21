@@ -18,7 +18,7 @@ const Sidebar = () => {
           className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`}
         >
           <PlusCircle size={22} />
-          <span>Harajat Qo'shish</span>
+          <span>Xarajat Qo'shish</span>
         </NavLink>
 
         <NavLink 
@@ -26,7 +26,7 @@ const Sidebar = () => {
           className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`}
         >
           <List size={22} />
-          <span>Sõnggi Harajatlar</span>
+          <span>Sõnggi Xarajatlar</span>
         </NavLink>
 
         <NavLink 

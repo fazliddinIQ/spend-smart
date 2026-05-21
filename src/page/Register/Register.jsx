@@ -44,7 +44,7 @@ function Register() {
         <div className="auth-form">
           <input
             className="input-glass"
-            placeholder="Yangi Username"
+            placeholder="Yangi ism"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
@@ -52,7 +52,7 @@ function Register() {
           <input
             className="input-glass"
             type="password"
-            placeholder="Yangi Password"
+            placeholder="Yangi parol"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />

@@ -1,12 +1,13 @@
 import { useAppContext } from "../../context/AppContext";
 import "./Navbar.css";
 import { Wallet, AlertCircle, CalendarClock, LogOut } from "lucide-react";
+const { theme, toggleTheme } = useAppContext();
 
 const Navbar = () => {
-  const { 
-    budget, 
-    currentMonthTotal, 
-    isBudgetExceeded, 
+  const {
+    budget,
+    currentMonthTotal,
+    isBudgetExceeded,
     isBudgetSetForThisMonth,
     todayLimit,
     spentToday,
@@ -15,8 +16,8 @@ const Navbar = () => {
     logoutUser
   } = useAppContext();
 
-  const progressPercentage = budget.monthly > 0 
-    ? Math.min((currentMonthTotal / budget.monthly) * 100, 100) 
+  const progressPercentage = budget.monthly > 0
+    ? Math.min((currentMonthTotal / budget.monthly) * 100, 100)
     : 0;
 
   const dailyProgressPercentage = baseDailyLimit > 0
@@ -126,6 +127,22 @@ const Navbar = () => {
         onClick={logoutUser}
         title="Tizimdan chiqish"
       >
+
+        <div className="sidebar-bottom">
+          <button onClick={toggleTheme} className="theme-toggle">
+            {theme === "light" ? (
+              <>
+                <Moon size={20} />
+                <span>Tungi Rejim</span>
+              </>
+            ) : (
+              <>
+                <Sun size={20} />
+                <span>Kunduzgi Rejim</span>
+              </>
+            )}
+          </button>
+        </div>
         <LogOut size={20} />
       </button>
     </nav>

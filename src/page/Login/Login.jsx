@@ -21,7 +21,7 @@ function Login() {
     if (success) {
       navigate("/dashboard");
     } else {
-      setError("Username yoki parol noto'g'ri!");
+      setError("ism yoki parol noto'g'ri!");
     }
   };
 
@@ -39,7 +39,7 @@ function Login() {
         <div className="auth-form">
           <input
             className="input-glass"
-            placeholder="Username"
+            placeholder="ism"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
@@ -47,7 +47,7 @@ function Login() {
           <input
             className="input-glass"
             type="password"
-            placeholder="Password"
+            placeholder="parol"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />

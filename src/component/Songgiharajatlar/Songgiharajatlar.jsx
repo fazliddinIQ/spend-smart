@@ -49,7 +49,7 @@ const Songgiharajatlar = () => {
 
   return (
     <div className="songgi-container animate-fade-in">
-      <h2 className="page-title">Sõnggi Harajatlar</h2>
+      <h2 className="page-title">So`nggi Xarajatlar</h2>
 
       <div className="tabs glass-panel">
         <button 
@@ -76,7 +76,7 @@ const Songgiharajatlar = () => {
         {filteredExpenses.length === 0 ? (
           <div className="empty-state glass-card">
             <Calendar size={48} className="empty-icon" />
-            <p>Bu davr uchun harajatlar topilmadi.</p>
+            <p>Bu davr uchun xarajatlar topilmadi.</p>
           </div>
         ) : (
           <div className="cards-grid">
@@ -107,12 +107,12 @@ const Songgiharajatlar = () => {
       {filteredExpenses.length > 0 && (
         <>
           <div className="total-summary glass-panel">
-            <h3>{activeTab === "Bugun" ? "Total today:" : activeTab === "Bu Oy" ? "Total this month:" : "Total all time:"}</h3>
+            <h3>{activeTab === "Bugun" ? "Bugunning xarajatlari:" : activeTab === "Bu Oy" ? "Bu Oyning xarajatlari:" : "Hammasi:"}</h3>
             <p className="total-number">{totalAmount}</p>
           </div>
           
           <div className="chart-wrapper glass-card">
-            <h3 className="chart-title">Harajatlar Diagrammasi</h3>
+            <h3 className="chart-title">Xarajatlar Diagrammasi</h3>
             <ExpenseChart data={filteredExpenses} type={activeTab} />
           </div>
         </>

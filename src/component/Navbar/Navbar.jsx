@@ -1,7 +1,6 @@
 import { useAppContext } from "../../context/AppContext";
 import "./Navbar.css";
 import { Wallet, AlertCircle, CalendarClock, LogOut } from "lucide-react";
-const { theme, toggleTheme } = useAppContext();
 
 const Navbar = () => {
   const {
@@ -128,21 +127,6 @@ const Navbar = () => {
         title="Tizimdan chiqish"
       >
 
-        <div className="sidebar-bottom">
-          <button onClick={toggleTheme} className="theme-toggle">
-            {theme === "light" ? (
-              <>
-                <Moon size={20} />
-                <span>Tungi Rejim</span>
-              </>
-            ) : (
-              <>
-                <Sun size={20} />
-                <span>Kunduzgi Rejim</span>
-              </>
-            )}
-          </button>
-        </div>
         <LogOut size={20} />
       </button>
     </nav>

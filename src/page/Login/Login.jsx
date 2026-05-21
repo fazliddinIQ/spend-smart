@@ -39,7 +39,7 @@ function Login() {
         <div className="auth-form">
           <input
             className="input-glass"
-            placeholder="ism"
+            placeholder="username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
@@ -47,7 +47,7 @@ function Login() {
           <input
             className="input-glass"
             type="password"
-            placeholder="parol"
+            placeholder="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />

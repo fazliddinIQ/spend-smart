@@ -26,7 +26,7 @@ const Sidebar = () => {
           className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`}
         >
           <List size={22} />
-          <span>Sõnggi Xarajatlar</span>
+          <span>So`nggi Xarajatlar</span>
         </NavLink>
 
         <NavLink 
